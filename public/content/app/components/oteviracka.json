@@ -1,15 +1,45 @@
 {
-  "title": "KDY MÁME OTEVŘENO",
   "funkce": {
-    "poctv": { "od": "16", "do": "22" },
-    "patek": { "od": "16", "do": "00" },
-    "sobota": { "od": "16", "do": "00" }
+    "poctv": {
+      "od": "16",
+      "do": "22"
+    },
+    "patek": {
+      "od": "16",
+      "do": "00"
+    },
+    "sobota": {
+      "od": "16",
+      "do": "00"
+    }
   },
-  "day1": { "title": "Pondělí", "hours": "Zavřeno" },
-  "day2": { "title": "Úterý", "hours": "16:00 - 22:00" },
-  "day3": { "title": "Středa", "hours": "16:00 - 22:00" },
-  "day4": { "title": "Čtvrtek", "hours": "16:00 - 22:00" },
-  "day5": { "title": "Pátek", "hours": "16:00 - 00:00" },
-  "day6": { "title": "Sobota", "hours": "16:00 - 00:00" },
-  "day7": { "title": "Neděle", "hours": "Zavřeno" }
+  "day1": {
+    "title": "Pondělí",
+    "hours": "Zavřen"
+  },
+  "day2": {
+    "title": "Úterý",
+    "hours": "16:00 - 22:00"
+  },
+  "day3": {
+    "title": "Středa",
+    "hours": "16:00 - 22:00"
+  },
+  "day4": {
+    "title": "Čtvrtek",
+    "hours": "16:00 - 22:00"
+  },
+  "title": "KDY MÁME OTEVŘENO",
+  "day5": {
+    "title": "Pátek",
+    "hours": "16:00 - 00:00"
+  },
+  "day6": {
+    "title": "Sobota",
+    "hours": "16:00 - 00:00"
+  },
+  "day7": {
+    "title": "Neděle",
+    "hours": "Zavřeno"
+  }
 }
