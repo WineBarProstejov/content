@@ -5,7 +5,7 @@
 
 # CORS for JSON/content
 [[headers]]
-  for = "/content/*"
+  for = "/public/*"
   [headers.values]
     Access-Control-Allow-Origin = "*"
     Access-Control-Allow-Methods = "GET, OPTIONS"
