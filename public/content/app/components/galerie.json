@@ -1,0 +1,76 @@
+{
+  "photos": [
+    {
+      "src": "public/content/app/components/galerie/5.webp",
+      "alt": "Wine Bar Interior 5"
+    },
+    {
+      "src": "public/content/app/components/galerie/1_7.webp",
+      "alt": "Wine Bar Interior 4"
+    },
+    {
+      "src": "public/content/app/components/galerie/2.webp",
+      "alt": "Wine Bar Interior 2"
+    },
+    {
+      "src": "public/content/app/components/galerie/1_1.webp",
+      "alt": "Wine Bar Interior 4"
+    },
+    {
+      "src": "public/content/app/components/galerie/4.webp",
+      "alt": "Wine Bar Interior 4"
+    },
+    {
+      "src": "public/content/app/components/galerie/1_2.webp",
+      "alt": "Wine Bar Interior 4"
+    },
+    {
+      "src": "public/content/app/components/galerie/6.webp",
+      "alt": "Wine Bar Interior 6"
+    },
+    {
+      "src": "public/content/app/components/galerie/1_6.webp",
+      "alt": "Wine Bar Interior 4"
+    },
+    {
+      "src": "public/content/app/components/galerie/7.webp",
+      "alt": "Wine Bar Interior 7"
+    },
+    {
+      "src": "public/content/app/components/galerie/1_1_1.webp",
+      "alt": "Wine Bar Interior 4"
+    },
+    {
+      "src": "public/content/app/components/galerie/8.webp",
+      "alt": "Wine Bar Interior 8"
+    },
+    {
+      "src": "public/content/app/components/galerie/9.webp",
+      "alt": "Wine Bar Interior 9"
+    },
+    {
+      "src": "public/content/app/components/galerie/1_12.webp",
+      "alt": "Wine Bar Interior 4"
+    },
+    {
+      "src": "public/content/app/components/galerie/3.webp",
+      "alt": "Wine Bar Interior 3"
+    },
+    {
+      "src": "public/content/app/components/galerie/1.webp",
+      "alt": "Wine Bar Interior 1"
+    },
+    {
+      "src": "public/content/app/components/galerie/1_5.webp",
+      "alt": "Wine Bar Interior 4"
+    },
+    {
+      "src": "public/content/app/components/galerie/1_9.webp",
+      "alt": "Wine Bar Interior 4"
+    },
+    {
+      "src": "public/content/app/components/galerie/1_10.webp",
+      "alt": "Wine Bar Interior 4"
+    }
+  ]
+}

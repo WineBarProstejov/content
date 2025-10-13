@@ -1,0 +1,48 @@
+{
+  "title": "O PODNIK",
+  "description": "OBJEVTE PŘÍBĚH PODNÍKU VINE BAR A NAŠI MISI A HODNOTY.",
+  "timeline": [
+    {
+      "year": "2023 - Zrození myšlenky",
+      "description": "První myšlenka na otevření vinárny vznikla v hlavách zakladatelů, když se rozhodli spojit své znalosti a zkušenosti s vírou ve vytvoření kvalitního podniku.",
+      "image": "public/content/app/components/interier/1_3.webp",
+      "alt": "asd"
+    },
+    {
+      "year": "Září 2023 - Září 2024 - Rekonstrukce prostorů a přípravy",
+      "description": "Rok trval proces rekonstrukce prostoru, kde se dnes nachází Toscana Wine Bar.",
+      "image": "public/content/app/components/interier/1_4.webp",
+      "alt": "Vine Bar Opening"
+    },
+    {
+      "year": "Září 2024 - Slavnostní otevření",
+      "description": "V září 2024 byla vinárna slavnostně otevřena a od té doby se stala oblíbeným místem pro milovníky vína z celého světa.",
+      "image": "public/content/app/components/interier/1_2.webp",
+      "alt": "Vine Bar Award"
+    },
+    {
+      "year": "asd",
+      "description": "asd",
+      "image": "public/content/app/components/interier/medusajs.png",
+      "alt": "asd"
+    }
+  ],
+  "vision": {
+    "title": "Naše vize a hodnoty",
+    "description": "V naší vinárně se snažíme vytvořit nezapomenutelný zážitek s vínem, který oslavuje umění výroby vína a podporuje komunitu milovníků vína.",
+    "mission": {
+      "title": "Mise",
+      "description": "Náš cíl je poskytnout zákazníkům nezapomenutelný zážitek s vínem, zároveň poskytovat prostor pro zábavu a relaxaci."
+    },
+    "values": {
+      "title": "Hodnoty",
+      "list": [
+        "Útulné prostředí k hřejivému šálku kvalitní kávy",
+        "Důraz na vysoký standard kvality a prezentace nabízeného sortimentu",
+        "Široký výběr vína, ve kterém se najde každý jeho milovník u jakékoliv příležitosti",
+        "Vášeň pro víno, pohostinnost a příjemné prostředí pro každého"
+      ],
+      "feedback": "Váš názor na naši práci."
+    }
+  }
+}
