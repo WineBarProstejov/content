@@ -1,0 +1,24 @@
+# Netlify config: serve static site from repo root and add CORS headers
+[build]
+  command = ""
+  publish = "/"
+
+# CORS for JSON/content
+[[headers]]
+  for = "/content/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type, Authorization, X-Requested-With"
+    Access-Control-Max-Age = "86400"
+    Cache-Control = "no-store"
+
+# CORS for uploaded images
+[[headers]]
+  for = "/uploads/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type, Authorization, X-Requested-With"
+    Access-Control-Max-Age = "86400"
+    Cache-Control = "public, max-age=3600"
