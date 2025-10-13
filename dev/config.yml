@@ -1,0 +1,137 @@
+local_backend: true
+backend:
+  name: git-gateway
+
+  
+media_folder: "public/uploads"
+public_folder: "public/uploads"
+
+collections:
+  - name: "about"
+    label: "About Section"
+    media_folder: "interier/"
+    public_folder: "public/content/app/components/interier"
+    files:
+      - file: "public/content/app/components/about.json"
+        label: "About JSON"
+        name: "about"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - label: "Timeline"
+            name: "timeline"
+            widget: "list"
+            fields:
+              - { label: "Year", name: "year", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+          - label: "Vision"
+            name: "vision"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Mission"
+                name: "mission"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+              - label: "Values"
+                name: "values"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "List", name: "list", widget: "list", field: { label: "Value", name: "value", widget: "string" } }
+                  - { label: "Feedback", name: "feedback", widget: "text" }
+
+  - name: "galerie"
+    label: "Galerie"
+    media_folder: "galerie/"
+    public_folder: "public/content/app/components/galerie"
+    files:
+      - file: "public/content/app/components/galerie.json"
+        label: "Galerie JSON"
+        name: "galerie"
+        fields:
+          - label: "Photos"
+            name: "photos"
+            widget: "list"
+            summary: "{{fields.alt}} — {{fields.src}}"
+            fields:
+              - { label: "Image", name: "src", widget: "image" }
+              - { label: "Alt", name: "alt", widget: "string" }
+
+  - name: "oteviracka"
+    label: "Otevírací doba"
+    files:
+      - file: "public/content/app/components/oteviracka.json"
+        label: "Otevírací doba JSON"
+        name: "oteviracka"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - label: "Den 1"
+            name: "day1"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Hours", name: "hours", widget: "string" }
+          - label: "Den 2"
+            name: "day2"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Hours", name: "hours", widget: "string" }
+          - label: "Den 3"
+            name: "day3"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Hours", name: "hours", widget: "string" }
+          - label: "Den 4"
+            name: "day4"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Hours", name: "hours", widget: "string" }
+          - label: "Den 5"
+            name: "day5"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Hours", name: "hours", widget: "string" }
+          - label: "Den 6"
+            name: "day6"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Hours", name: "hours", widget: "string" }
+          - label: "Den 7"
+            name: "day7"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Hours", name: "hours", widget: "string" }
+          - label: "Funkce (generátor)"
+            name: "funkce"
+            widget: "object"
+            fields:
+              - label: "Po-Čt"
+                name: "poctv"
+                widget: "object"
+                fields:
+                  - { label: "Od", name: "od", widget: "string" }
+                  - { label: "Do", name: "do", widget: "string" }
+              - label: "Pátek"
+                name: "patek"
+                widget: "object"
+                fields:
+                  - { label: "Od", name: "od", widget: "string" }
+                  - { label: "Do", name: "do", widget: "string" }
+              - label: "Sobota"
+                name: "sobota"
+                widget: "object"
+                fields:
+                  - { label: "Od", name: "od", widget: "string" }
+                  - { label: "Do", name: "do", widget: "string" }
