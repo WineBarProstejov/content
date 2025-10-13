@@ -135,3 +135,21 @@ collections:
                 fields:
                   - { label: "Od", name: "od", widget: "string" }
                   - { label: "Do", name: "do", widget: "string" }
+
+
+  - name: "menu"
+    label: "Menu"
+    media_folder: "menu/"
+    public_folder: "public/content/app/components/galerie/menu"
+    files:
+      - file: "public/content/app/components/menu.json"
+        label: "Menu JSON"
+        name: "menu"
+        fields:
+          - label: "Images"
+            name: "images"
+            widget: "list"
+            summary: "{{fields.alt}} — {{fields.src}}"
+            fields:
+              - { label: "Image", name: "src", widget: "image" }
+              - { label: "Alt", name: "alt", widget: "string" }
