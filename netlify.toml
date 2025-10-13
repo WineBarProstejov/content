@@ -1,0 +1,19 @@
+# Netlify configuration for Decap CMS content hosting and CORS
+[build]
+  command = ""
+  publish = "/"
+
+# Allow cross-origin reads of JSON and uploads (if your Next app pulls from here)
+[[headers]]
+  for = "/content/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type, Authorization"
+
+[[headers]]
+  for = "/uploads/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type, Authorization"
