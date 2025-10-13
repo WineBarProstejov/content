@@ -1,6 +1,9 @@
-local_backend: true
+# local_backend: true
 backend:
-  name: git-gateway
+  # name: git-gateway
+  name: github
+  repo: WineBarProstejov/content
+  branch: main
   
 media_folder: "public/uploads"
 public_folder: "public/uploads"
