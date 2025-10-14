@@ -7,7 +7,222 @@
     <title>Content Manager</title>
   </head>
   <body>
-    <!-- Include Decap CMS directly from CDN -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script>
+      // Register raw CSS for preview pane (scoped inside iframe)
+      CMS.registerPreviewStyle(`
+        :root { color-scheme: light dark; }
+        body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif; margin:0; padding:24px; background:#f8fafc; }
+        @media (prefers-color-scheme: dark){ body { background:#0f172a; color:#e2e8f0; } }
+        .MenuPreview_root { max-width:1200px; margin:0 auto; display:flex; flex-direction:column; gap:32px; }
+        .MenuPreview_header { display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+        .MenuPreview_header h1 { font-size:clamp(1.6rem,2.8vw,2.2rem); margin:0; font-weight:600; letter-spacing:.5px; }
+        .MenuPreview_count { font-size:12px; padding:4px 10px; background:#2563eb; color:#fff; border-radius:999px; letter-spacing:.5px; }
+        @media (prefers-color-scheme: dark){ .MenuPreview_count { background:#1d4ed8; } }
+        .MenuPreview_cover { position:relative; overflow:hidden; border-radius:18px; box-shadow:0 4px 14px -4px rgba(0,0,0,.25); border:1px solid #e2e8f0; background:#fff; }
+        @media (prefers-color-scheme: dark){ .MenuPreview_cover { background:#1f2937; border-color:#334155; } }
+  .MenuPreview_cover img { width:100%; max-height:220px; object-fit:cover; display:block; }
+        .MenuPreview_coverTag { position:absolute; top:10px; left:10px; background:rgba(15,23,42,.7); color:#fff; font-size:12px; padding:4px 10px; border-radius:999px; text-transform:uppercase; letter-spacing:.7px; }
+  .MenuPreview_grid { display:grid; gap:10px; grid-template-columns:repeat(auto-fill,minmax(90px,1fr)); }
+  .MenuPreview_card { position:relative; background:#fff; border:1px solid #e2e8f0; border-radius:10px; padding:6px 6px 8px; display:flex; flex-direction:column; gap:4px; box-shadow:0 1px 3px -2px rgba(0,0,0,.18); }
+        @media (prefers-color-scheme: dark){ .MenuPreview_card { background:#1e293b; border-color:#334155; } }
+  .MenuPreview_thumbWrap { width:100%; height:110px; overflow:hidden; border-radius:6px; background:linear-gradient(120deg,#e2e8f0,#f1f5f9); position:relative; }
+        @media (prefers-color-scheme: dark){ .MenuPreview_thumbWrap { background:linear-gradient(120deg,#334155,#1e293b); } }
+  .MenuPreview_thumbWrap img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .28s ease; }
+  .MenuPreview_card:hover img { transform:scale(1.04); }
+        .MenuPreview_index { position:absolute; top:6px; left:6px; background:rgba(0,0,0,.55); color:#fff; font-size:11px; padding:2px 8px; border-radius:999px; }
+        .MenuPreview_meta { font-size:11px; line-height:1.3; word-break:break-word; opacity:.85; }
+        .MenuPreview_empty { font-style:italic; opacity:.6; padding:8px 4px; }
+  /* Shared preview utility styles */
+  .Preview_block { background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:20px 22px; box-shadow:0 2px 6px -3px rgba(0,0,0,.18); }
+  @media (prefers-color-scheme: dark){ .Preview_block { background:#1e293b; border-color:#334155; } }
+  .Preview_heading { margin:0 0 16px; font-weight:600; font-size:clamp(1.4rem,2.5vw,2rem); letter-spacing:.5px; }
+  .Preview_subheading { margin:0 0 10px; font-weight:600; font-size:1.05rem; letter-spacing:.3px; }
+  .Preview_muted { opacity:.65; }
+  .Timeline_list { display:flex; flex-direction:column; gap:14px; margin:0; padding:0; list-style:none; }
+  .Timeline_item { display:flex; gap:14px; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:12px; padding:10px 14px; align-items:flex-start; }
+  @media (prefers-color-scheme: dark){ .Timeline_item { background:#0f172a; border-color:#334155; } }
+  .Timeline_imgWrap { width:76px; min-width:76px; height:60px; overflow:hidden; border-radius:8px; background:#e2e8f0; display:flex; align-items:center; justify-content:center; font-size:10px; }
+  @media (prefers-color-scheme: dark){ .Timeline_imgWrap { background:#1e293b; } }
+  .Timeline_imgWrap img { width:100%; height:100%; object-fit:cover; display:block; }
+  .Timeline_content h4 { margin:0 0 4px; font-size:.9rem; letter-spacing:.3px; }
+  .Timeline_desc { margin:0; font-size:.75rem; line-height:1.25; opacity:.85; }
+  .Values_list { display:grid; gap:6px; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); margin:12px 0 0; padding:0; list-style:none; }
+  .Values_list li { background:#f1f5f9; border:1px solid #e2e8f0; border-radius:10px; padding:8px 10px; font-size:.68rem; line-height:1.25; }
+  @media (prefers-color-scheme: dark){ .Values_list li { background:#0f172a; border-color:#334155; } }
+  .Gallery_grid { display:grid; gap:10px; grid-template-columns:repeat(auto-fill,minmax(90px,1fr)); }
+  .Gallery_cell { position:relative; background:#fff; border:1px solid #e2e8f0; border-radius:10px; padding:4px; box-shadow:0 1px 3px -2px rgba(0,0,0,.18); }
+  @media (prefers-color-scheme: dark){ .Gallery_cell { background:#1e293b; border-color:#334155; } }
+  .Gallery_cellInner { width:100%; height:90px; overflow:hidden; border-radius:6px; background:linear-gradient(120deg,#e2e8f0,#f1f5f9); display:flex; align-items:center; justify-content:center; }
+  @media (prefers-color-scheme: dark){ .Gallery_cellInner { background:linear-gradient(120deg,#334155,#1e293b); } }
+  .Gallery_cellInner img { width:100%; height:100%; object-fit:cover; }
+  .Gallery_index { position:absolute; top:4px; left:4px; background:rgba(0,0,0,.55); color:#fff; font-size:10px; padding:2px 6px; border-radius:999px; }
+  .Schedule_table { width:100%; border-collapse:collapse; font-size:.75rem; }
+  .Schedule_table th, .Schedule_table td { padding:6px 10px; text-align:left; border-bottom:1px solid #e2e8f0; }
+  @media (prefers-color-scheme: dark){ .Schedule_table th, .Schedule_table td { border-color:#334155; } }
+  .Schedule_table th { font-weight:600; font-size:.7rem; text-transform:uppercase; letter-spacing:.5px; }
+  .Schedule_table tbody tr:last-child td { border-bottom:none; }
+  .Schedule_badge { background:#2563eb; color:#fff; font-size:.6rem; padding:2px 6px; border-radius:999px; letter-spacing:.5px; }
+  @media (prefers-color-scheme: dark){ .Schedule_badge { background:#1d4ed8; } }
+      `, { raw: true });
+
+  var MenuPreview = createClass({
+        getList: function(field){
+          try { return this.props.widgetsFor(field); } catch(e){ return []; }
+        },
+        render: function(){
+          var entry = this.props.entry;
+            var getAsset = this.props.getAsset;
+            var coverObj = entry.getIn(['data','cover']);
+            var coverImage = coverObj && coverObj.get && coverObj.get('image');
+            var coverAlt = coverObj && coverObj.get && coverObj.get('alt');
+            var coverResolved = coverImage ? getAsset(coverImage) : null;
+            var images = this.getList('images');
+    if (!window.__menuPreviewLogged) { console.log('[MenuPreview] render', { coverImage, count: images && images.size }); window.__menuPreviewLogged = true; }
+            return h('div', { className:'MenuPreview_root' }, [
+              h('div', { className:'MenuPreview_header' }, [
+                h('h1', {}, 'Menu Náhled'),
+                h('span', { className:'MenuPreview_count' }, (images && images.size ? images.size : 0) + ' položek')
+              ]),
+              coverResolved ? h('div', { className:'MenuPreview_cover' }, [
+                h('img', { src: String(coverResolved), alt: coverAlt || 'Cover' }),
+                h('span', { className:'MenuPreview_coverTag' }, 'Cover')
+              ]) : null,
+              (!images || images.size === 0) ? h('div', { className:'MenuPreview_empty' }, 'Žádné obrázky dosud nepřidány.') : h('div', { className:'MenuPreview_grid' }, images.map(function(row, idx){
+                var data = row.get('data');
+                var widgets = row.get('widgets');
+                var srcVal = data && data.get('src');
+                var altVal = data && data.get('alt');
+                var resolved = srcVal ? getAsset(srcVal) : null;
+                return h('div', { key: idx, className:'MenuPreview_card' }, [
+                  h('div', { className:'MenuPreview_thumbWrap' }, [
+                    resolved ? h('img', { src: String(resolved), alt: altVal || ('Item '+(idx+1)) }) : h('div', { style:{display:'flex',alignItems:'center',justifyContent:'center', height:'100%', fontSize:'11px', opacity:.6}}, 'No Image'),
+                    h('span', { className:'MenuPreview_index' }, '#'+(idx+1))
+                  ]),
+                  h('div', { className:'MenuPreview_meta' }, [
+                    altVal ? h('div', {}, altVal) : null,
+                    !altVal && srcVal ? h('div', { style:{opacity:.6}}, srcVal) : null,
+                    widgets && widgets.get('alt') ? h('div', { style:{marginTop:'4px'}}, widgets.get('alt')): null
+                  ])
+                ]);
+              }))
+            ]);
+        }
+      });
+
+      CMS.registerPreviewTemplate('menu', MenuPreview);
+
+      // Galerie Preview
+      var GaleriePreview = createClass({
+        getList: function(field){ try { return this.props.widgetsFor(field); } catch(e){ return []; } },
+        render: function(){
+          var entry = this.props.entry;
+          var getAsset = this.props.getAsset;
+          var photos = this.getList('photos');
+          return h('div', { className:'MenuPreview_root' }, [
+            h('div', { className:'MenuPreview_header' }, [
+              h('h1', {}, 'Galerie Náhled'),
+              h('span', { className:'MenuPreview_count' }, (photos && photos.size ? photos.size : 0) + ' fotek')
+            ]),
+            (!photos || photos.size === 0) ? h('div', { className:'MenuPreview_empty' }, 'Žádné fotografie.') : h('div', { className:'Gallery_grid' }, photos.map(function(row, idx){
+              var data = row.get('data');
+              var srcVal = data && data.get('src');
+              var altVal = data && data.get('alt');
+              var resolved = srcVal ? getAsset(srcVal) : null;
+              return h('div', { key: idx, className:'Gallery_cell' }, [
+                h('div', { className:'Gallery_cellInner' }, [
+                  resolved ? h('img', { src:String(resolved), alt: altVal || ('Photo '+(idx+1)) }) : h('span', { style:{fontSize:'10px',opacity:.6}}, 'No Image'),
+                  h('span', { className:'Gallery_index' }, '#'+(idx+1))
+                ]),
+                altVal ? h('div', { style:{marginTop:'4px', fontSize:'10px', lineHeight:1.2, opacity:.85}}, altVal) : null
+              ]);
+            }))
+          ]);
+        }
+      });
+      CMS.registerPreviewTemplate('galerie', GaleriePreview);
+
+      // About Preview
+      var AboutPreview = createClass({
+        render: function(){
+          var entry = this.props.entry;
+          var getAsset = this.props.getAsset;
+          var title = entry.getIn(['data','title']);
+          var description = entry.getIn(['data','description']);
+          var timeline = entry.getIn(['data','timeline']);
+          var visionTitle = entry.getIn(['data','vision','title']);
+          var visionDesc = entry.getIn(['data','vision','description']);
+          var missionTitle = entry.getIn(['data','vision','mission','title']);
+          var missionDesc = entry.getIn(['data','vision','mission','description']);
+          var valuesTitle = entry.getIn(['data','vision','values','title']);
+          var valuesList = entry.getIn(['data','vision','values','list']);
+          return h('div', { className:'MenuPreview_root' }, [
+            h('div', { className:'Preview_block' }, [
+              h('h1', { className:'Preview_heading' }, title || 'About Náhled'),
+              description ? h('p', { style:{margin:'0 0 8px', lineHeight:1.35, fontSize:'.85rem'}}, String(description)) : null
+            ]),
+            h('div', { className:'Preview_block' }, [
+              h('h2', { className:'Preview_subheading' }, 'Timeline'),
+              (!timeline || timeline.size === 0) ? h('div', { className:'MenuPreview_empty' }, 'Žádné položky timeline.') : h('ul', { className:'Timeline_list' }, timeline.map(function(item, idx){
+                var year = item.get('year');
+                var desc = item.get('description');
+                var img = item.get('image');
+                var alt = item.get('alt');
+                var resolved = img ? getAsset(img) : null;
+                return h('li', { key: idx, className:'Timeline_item' }, [
+                  h('div', { className:'Timeline_imgWrap' }, resolved ? h('img', { src:String(resolved), alt: alt || year || 'timeline' }) : h('span', { style:{opacity:.5}}, 'No Img')),
+                  h('div', { className:'Timeline_content' }, [
+                    h('h4', {}, year || ('Item '+(idx+1))),
+                    desc ? h('p', { className:'Timeline_desc' }, String(desc)) : null
+                  ])
+                ]);
+              }))
+            ]),
+            h('div', { className:'Preview_block' }, [
+              h('h2', { className:'Preview_subheading' }, visionTitle || 'Vize'),
+              visionDesc ? h('p', { style:{margin:'0 0 10px', lineHeight:1.35, fontSize:'.8rem'}}, String(visionDesc)) : null,
+              h('div', { style:{display:'flex', flexWrap:'wrap', gap:'22px'}}, [
+                h('div', { style:{flex:'1 1 260px', minWidth:'240px'} }, [
+                  h('h3', { className:'Preview_subheading', style:{fontSize:'.9rem', margin:'0 0 6px'} }, missionTitle || 'Mise'),
+                  missionDesc ? h('p', { style:{margin:0, fontSize:'.72rem', lineHeight:1.3}}, String(missionDesc)) : null
+                ]),
+                h('div', { style:{flex:'1 1 280px', minWidth:'240px'} }, [
+                  h('h3', { className:'Preview_subheading', style:{fontSize:'.9rem', margin:'0 0 6px'} }, valuesTitle || 'Hodnoty'),
+                  valuesList && valuesList.size ? h('ul', { className:'Values_list' }, valuesList.map(function(v, i){ return h('li', { key:i }, String(v)); })) : h('div', { className:'Preview_muted', style:{fontSize:'.7rem'}}, 'Žádné hodnoty.')
+                ])
+              ])
+            ])
+          ]);
+        }
+      });
+      CMS.registerPreviewTemplate('about', AboutPreview);
+
+      // Otevírací doba Preview
+      var OtevirackaPreview = createClass({
+        render: function(){
+          var entry = this.props.entry;
+          var title = entry.getIn(['data','title']);
+          var days = [];
+          for (var i=1;i<=7;i++){ var obj = entry.getIn(['data','day'+i]); if(obj){ days.push({ t: obj.get('title'), h: obj.get('hours') }); } }
+          return h('div', { className:'MenuPreview_root' }, [
+            h('div', { className:'Preview_block' }, [
+              h('h1', { className:'Preview_heading' }, title || 'Otevírací doba'),
+              h('table', { className:'Schedule_table' }, [
+                h('thead', {}, [ h('tr', {}, [ h('th', {}, 'Den'), h('th', {}, 'Čas'), h('th', {}, 'Stav') ]) ]),
+                h('tbody', {}, days.map(function(d, idx){
+                  var closed = /zavřen|zavřeno/i.test(d.h || '');
+                  return h('tr', { key:idx }, [
+                    h('td', {}, d.t || ('Den '+(idx+1))),
+                    h('td', {}, d.h || '—'),
+                    h('td', {}, closed ? h('span', { className:'Schedule_badge', style:{background:'#64748b'}}, 'Zavřeno') : h('span', { className:'Schedule_badge'}, 'Otevřeno'))
+                  ]);
+                }))
+              ])
+            ])
+          ]);
+        }
+      });
+      CMS.registerPreviewTemplate('oteviracka', OtevirackaPreview);
+    </script>
   </body>
 </html>
