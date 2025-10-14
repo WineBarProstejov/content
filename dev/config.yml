@@ -146,6 +146,12 @@ collections:
         label: "Menu JSON"
         name: "menu"
         fields:
+          - label: "Cover"
+            name: "cover"
+            widget: "object"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Alt", name: "alt", widget: "string", required: false }
           - label: "Images"
             name: "images"
             widget: "list"

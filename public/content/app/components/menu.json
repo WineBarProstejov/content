@@ -1,4 +1,8 @@
 {
+  "cover": {
+    "image": "public/content/app/components/galerie/menu/1.png",
+    "alt": "Hlavní náhled menu"
+  },
   "images": [
     {
       "src": "public/content/app/components/galerie/menu/1.png",
