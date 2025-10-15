@@ -10,6 +10,10 @@ backend:
 media_folder: "public/uploads"
 public_folder: "public/uploads"
 
+logo:
+  src: "/public/uploads/logo-no.webp"
+  show_in_header: true
+
 collections:
   - name: "about"
     label: "About Section"
