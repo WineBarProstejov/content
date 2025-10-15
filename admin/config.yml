@@ -5,7 +5,8 @@ backend:
   repo: WineBarProstejov/content
   branch: main
   auth_scope: repo
-  base_url: https://api.netlify.com 
+  base_url: https://37d64c12.content-87t.pages.dev
+  auth_endpoint: api/auth
   
 media_folder: "public/uploads"
 public_folder: "public/uploads"
