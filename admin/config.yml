@@ -1,14 +1,18 @@
-# local_backend: true
+local_backend: true
 backend:
-  # name: git-gateway
-  name: github
-  repo: WineBarProstejov/content
-  branch: main
-  auth_scope: repo
-  base_url: https://api.netlify.com 
+  name: git-gateway
+
   
 media_folder: "public/uploads"
 public_folder: "public/uploads"
+
+
+
+# Custom logo for the CMS login screen (and optionally header)
+# Update the src path to your own logo if needed.
+logo:
+  src: "/public/uploads/logo-no.webp"
+  show_in_header: true
 
 collections:
   - name: "about"
@@ -139,6 +143,7 @@ collections:
                 fields:
                   - { label: "Od", name: "od", widget: "string" }
                   - { label: "Do", name: "do", widget: "string" }
+
 
   - name: "menu"
     label: "Menu"
