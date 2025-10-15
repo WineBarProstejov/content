@@ -2,10 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
     <meta name="theme-color" content="#0f172a" />
-    <link rel="icon" href="/public/uploads/logo.webp" type="image/png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/public/uploads/logo.webp" type="image/webp" />
+  <link href="mobile-overrides.css" rel="stylesheet" />
     <title>Content Manager</title>
     <style>
       /* Light touch global styling for the CMS shell (outside the preview iframe) */
@@ -13,10 +14,13 @@
       html, body { height: 100%; }
       body { margin: 0; background: linear-gradient(135deg,#f8fafc,#eef2ff); }
       @media (prefers-color-scheme: dark){ body { background: radial-gradient(1000px 600px at 50% -200px, #d4440a, #200b0d); } }
+  /* mobile helpers placeholder */
     </style>
   </head>
   <body>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    
+
     <script>
       // Register raw CSS for preview pane (scoped inside iframe)
       CMS.registerPreviewStyle(`
@@ -232,6 +236,7 @@
         }
       });
       CMS.registerPreviewTemplate('oteviracka', OtevirackaPreview);
+      
     </script>
   </body>
 </html>
