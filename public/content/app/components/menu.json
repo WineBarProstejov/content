@@ -5,40 +5,24 @@
   },
   "images": [
     {
-      "src": "public/content/app/components/galerie/menu/1.png",
-      "alt": "Menu page 1"
-    },
-    {
-      "src": "public/content/app/components/galerie/menu/2.png",
-      "alt": "Menu page 2"
+      "src": "public/content/app/components/galerie/menu/3.png",
+      "alt": "1"
     },
     {
       "src": "public/content/app/components/galerie/menu/4.png",
-      "alt": "Menu page 4"
+      "alt": "2"
+    },
+    {
+      "src": "public/content/app/components/galerie/menu/5.png",
+      "alt": "3"
     },
     {
       "src": "public/content/app/components/galerie/menu/6.png",
-      "alt": "Menu page 6"
-    },
-    {
-      "src": "public/content/app/components/galerie/menu/7.png",
-      "alt": "Menu page 7"
+      "alt": "4"
     },
     {
       "src": "public/content/app/components/galerie/menu/8.png",
-      "alt": "Menu page 8"
-    },
-    {
-      "src": "public/content/app/components/galerie/menu/9.png",
-      "alt": "Menu page 9"
-    },
-    {
-      "src": "public/content/app/components/galerie/menu/10.png",
-      "alt": "Menu page 10"
-    },
-    {
-      "src": "public/content/app/components/galerie/menu/11.png",
-      "alt": "Menu page 11"
+      "alt": "5"
     }
   ]
 }
