@@ -15,6 +15,25 @@ logo:
   show_in_header: true
 
 collections:
+  - name: "events"
+    label: "Akce (události)"
+    media_folder: "akce/"
+    public_folder: "public/content/app/components/akce"
+    files:
+      - file: "public/content/app/components/events.json"
+        label: "Akce"
+        name: "events"
+        fields:
+          - label: "Akce"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.title}} — {{fields.date}}"
+            fields:
+              - { label: "Název", name: "title", widget: "string" }
+              - { label: "Datum", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+              - { label: "Popis", name: "description", widget: "text" }
+              - { label: "Fotka", name: "image", widget: "image", required: false }
+
   - name: "rating"
     label: "Hodnocení (Google)"
     files:

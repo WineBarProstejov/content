@@ -41,6 +41,7 @@ All published content lives under `public/` (this is both the Decap
 |---|---|---|
 | `welcome` | `public/content/app/components/welcome.json` | `app/components/Welcome.tsx` (hero subtitle) |
 | `rating` | `public/content/app/components/rating.json` | `app/components/GoogleRatingBadge.tsx` (hero) |
+| `events` | `public/content/app/components/events.json` | `app/components/Events.tsx` (homepage) |
 | `about` | `public/content/app/components/about.json` | `app/components/About.tsx` |
 | `galerie` | `public/content/app/components/galerie.json` | `app/components/Gallery.tsx` |
 | `oteviracka` | `public/content/app/components/oteviracka.json` | `app/components/Oteviracka.tsx`, `app/components/open.tsx` |
@@ -58,6 +59,11 @@ these to absolute URLs pointing at a different host.
 
 - **welcome.json**: `subtitle` (string) — the one-line tagline under "Toscana
   Wine Bar" on the homepage hero.
+- **events.json**: `items[]` (`title`, `date` ISO `YYYY-MM-DD`, `description`,
+  `image?`). `app/lib/content.ts`'s `getEvents()` filters out events more
+  than a day in the past and sorts by date — the CMS list order doesn't
+  matter. An empty `items[]` is valid; `Events.tsx` renders nothing rather
+  than an empty "Připravujeme" heading.
 - **rating.json**: `rating` (number, e.g. `4.9`), `count` (optional string,
   e.g. `"126"`), `url` (optional link to the business's Google reviews).
   Shows as a "4.9★ na Googlu" badge in the hero (`GoogleRatingBadge.tsx`) —
