@@ -15,6 +15,26 @@ logo:
   show_in_header: true
 
 collections:
+  - name: "rating"
+    label: "Hodnocení (Google)"
+    files:
+      - file: "public/content/app/components/rating.json"
+        label: "Hodnocení"
+        name: "rating"
+        fields:
+          - { label: "Hodnocení (např. 4.9)", name: "rating", widget: "number", value_type: "float", min: 0, max: 5, default: 4.9 }
+          - { label: "Počet recenzí (nepovinné, např. 126)", name: "count", widget: "string", required: false }
+          - { label: "Odkaz na recenze", name: "url", widget: "string", required: false, hint: "Např. odkaz na Google recenze podniku" }
+
+  - name: "welcome"
+    label: "Úvodní text (hlavní strana)"
+    files:
+      - file: "public/content/app/components/welcome.json"
+        label: "Úvodní text"
+        name: "welcome"
+        fields:
+          - { label: "Podtitulek pod názvem podniku", name: "subtitle", widget: "string" }
+
   - name: "about"
     label: "About Section"
     media_folder: "interier/"
