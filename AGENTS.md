@@ -60,10 +60,13 @@ these to absolute URLs pointing at a different host.
 - **welcome.json**: `subtitle` (string) — the one-line tagline under "Toscana
   Wine Bar" on the homepage hero.
 - **events.json**: `items[]` (`title`, `date` ISO `YYYY-MM-DD`, `description`,
-  `image?`). `app/lib/content.ts`'s `getEvents()` filters out events more
-  than a day in the past and sorts by date — the CMS list order doesn't
-  matter. An empty `items[]` is valid; `Events.tsx` renders nothing rather
-  than an empty "Připravujeme" heading.
+  `image?`). Shown on the **dedicated `/akce` page**, not the homepage — it's
+  an archive of held events (past and future both, newest first), mainly to
+  give the site more real, indexable content for SEO (each entry also feeds
+  an `Event` JSON-LD block on that page). `getEvents()` does **not** filter
+  out past events — don't reintroduce an "upcoming only" filter without
+  checking with the site owner first, that was explicitly rejected. The CMS
+  list order doesn't matter; the page sorts by date itself.
 - **rating.json**: `rating` (number, e.g. `4.9`), `count` (optional string,
   e.g. `"126"`), `url` (optional link to the business's Google reviews).
   Shows as a "4.9★ na Googlu" badge in the hero (`GoogleRatingBadge.tsx`) —
@@ -96,6 +99,16 @@ Cloudflare Pages) — this is required for `website` to fetch cross-origin.
 `Cache-Control: no-store` on `/content/*` is intentional so editors see fresh
 content immediately; don't add caching there without checking with `website`'s
 revalidation strategy first.
+
+## GitHub webhook → website revalidation
+
+A GitHub webhook on **this repo** (Settings → Webhooks, push events on
+`main`) posts to `website`'s `https://www.toscanawinebar.eu/api/revalidate?secret=<REVALIDATE_SECRET>`
+every time something is published here (Decap commits directly to `main`,
+which fires the webhook). This is what makes CMS edits show up on the live
+site within seconds instead of up to 5 minutes. See `website/AGENTS.md`
+for the receiving end. If publishes stop showing up promptly, check this
+webhook's Recent Deliveries here before assuming the website is broken.
 
 ## Known quirks (not urgent, but don't be surprised)
 
